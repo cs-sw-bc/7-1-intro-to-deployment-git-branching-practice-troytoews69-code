@@ -72,8 +72,6 @@ const reviews = {
   ],
 };
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 app.get("/api/books", (req, res) => {
   res.json(books);
 });
@@ -84,8 +82,7 @@ app.get("/api/books/:id", (req, res) => {
   res.json(book);
 });
 
-app.get("/api/books/:id/reviews", async (req, res) => {
-  await sleep(3000);
+app.get("/api/books/:id/reviews", (req, res) => {
   const bookReviews = reviews[parseInt(req.params.id)] || [];
   res.json(bookReviews);
 });
